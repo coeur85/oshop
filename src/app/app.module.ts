@@ -49,6 +49,7 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
       {path : 'order-success' , component : OrderSuccessComponent },
       {path : 'check-out' , component : CheckOutComponent },
       {path : 'login' , component : LoginComponent },
+      {path : 'my/orders' , component : MyOrdersComponent },
 
 
       {path : 'admin/products' , component : AdminProductsComponent },
