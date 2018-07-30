@@ -1,3 +1,6 @@
+import { UserService } from './user.service';
+import { AuthGardService } from './auth-gard.service';
+import { AuthService } from './auth.service';
 
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,6 +23,7 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
+
 
 
 @NgModule({
@@ -46,18 +50,22 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
       {path : '' , component : HomeComponent },
       {path : 'Products' , component : ProductsComponent },
       {path : 'Shopping-cart' , component : ShopingCartComponent },
-      {path : 'order-success' , component : OrderSuccessComponent },
-      {path : 'check-out' , component : CheckOutComponent },
       {path : 'login' , component : LoginComponent },
-      {path : 'my/orders' , component : MyOrdersComponent },
-
-
-      {path : 'admin/products' , component : AdminProductsComponent },
-      {path : 'admin/orders' , component : AdminOrdersComponent }
+       
+      {path : 'my/orders' , component : MyOrdersComponent, canActivate: [AuthGardService] },
+      {path : 'order-success' , component : OrderSuccessComponent, canActivate: [AuthGardService] },
+      {path : 'check-out' , component : CheckOutComponent, canActivate: [AuthGardService] },
+      
+      {path : 'admin/products' , component : AdminProductsComponent, canActivate: [AuthGardService] },
+      {path : 'admin/orders' , component : AdminOrdersComponent, canActivate: [AuthGardService] }
 
     ])
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGardService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

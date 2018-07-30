@@ -20,7 +20,7 @@
       </ng-template>
 
 
-      <li ngbDropdown class="nav-item dropdown" *ngIf="user$ | async as user;else loginDiv">
+      <li ngbDropdown class="nav-item dropdown" *ngIf="Auth.user$ | async as user;else loginDiv">
         <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" 
         aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>{{ user.displayName }}</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01" ngbDropdownMenu>
